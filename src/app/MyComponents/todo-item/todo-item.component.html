@@ -1,0 +1,29 @@
+<div *ngIf="!isEditing">
+    <div class="my-3">
+        <div class="fs-5">{{ todo.title }}</div>
+        <p>{{ todo.desc }}</p>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                [(ngModel)]="todo.active">
+            <label class="form-check-label" for="exampleCheck1">{{ todo.active
+                }}</label>
+        </div>
+        <button class="btn btn-sm btn-danger me-3"
+            (click)="onClick(todo)">Delete</button>
+        <button class="btn btn-sm btn-primary me-3"
+            (click)="onClickEdit()">Edit</button>
+    </div>
+</div>
+
+<div *ngIf="isEditing">
+    <div class="my-3">
+        <input [(ngModel)]="editedTitle" placeholder="Title"
+            class="form-control mb-2" />
+        <input [(ngModel)]="editedDesc" placeholder="Description"
+            class="form-control mb-2" />
+        <button class="btn btn-sm btn-success"
+            (click)="onSaveEdit(todo)">Save</button>
+        <button class="btn btn-sm btn-secondary"
+            (click)="onCancelEdit()">Cancel</button>
+    </div>
+</div>
